@@ -272,6 +272,22 @@ const SafeImage = React.memo(({ src, alt, category, className }) => {
 export default function App() {
   // Navigation view: 'store' | 'pc-builder' | 'admin'
   const [view, setView] = useState('store');
+  // --- BẢO MẬT ADMIN PANEL ---
+  const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false);
+
+  const handleOpenAdmin = () => {
+    if (isAdminAuthenticated) {
+      setView('admin');
+    } else {
+      const password = prompt("Nhập mật khẩu Quản trị viên:");
+      if (password === '12345678') { // Đổi 12345678 thành mật khẩu riêng của bạn
+        setIsAdminAuthenticated(true);
+        setView('admin');
+      } else {
+        alert("Mật khẩu không chính xác!");
+      }
+    }
+  };
   const [products, setProducts] = useState(initialProducts);
   const [cart, setCart] = useState([]);
   const [wishlist, setWishlist] = useState([]);
@@ -697,7 +713,7 @@ export default function App() {
             </button>
 
             <button 
-              onClick={() => setView('admin')}
+              onClick={handleOpenAdmin}
               className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
                 view === 'admin' ? 'bg-emerald-500 text-black shadow-[0_0_15px_rgba(16,185,129,0.4)]' : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
               }`}
