@@ -1809,7 +1809,32 @@ export default function App() {
           </div>
         </div>
       )}
+    {/* --- THANH LIÊN HỆ MẠNG XÃ HỘI (GÓC DƯỚI BÊN TRÁI) --- */}
+      <div className="fixed bottom-6 left-6 z-50 flex flex-col gap-3">
+        {/* Nút Zalo */}
+        <a href="https://zalo.me/0999999999" target="_blank" rel="noreferrer" 
+           className="flex items-center gap-2 bg-[#0068ff] hover:bg-blue-600 text-white px-4 py-3 rounded-full shadow-[0_0_15px_rgba(0,104,255,0.4)] transition-transform hover:scale-110 font-bold text-sm">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg" alt="Zalo" className="w-6 h-6 bg-white rounded-full" />
+          Chat Zalo
+        </a>
 
+        {/* Nút Facebook Messenger */}
+        <a href="https://m.me/ten_page_cua_ban" target="_blank" rel="noreferrer"
+           className="flex items-center gap-2 bg-[#0866ff] hover:bg-blue-600 text-white px-4 py-3 rounded-full shadow-[0_0_15px_rgba(8,102,255,0.4)] transition-transform hover:scale-110 font-bold text-sm">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="Facebook" className="w-6 h-6 bg-white rounded-full" />
+          Facebook
+        </a>
+
+        {/* Nút TikTok */}
+        <a href="https://tiktok.com/@ten_kenh_cua_ban" target="_blank" rel="noreferrer"
+           className="flex items-center gap-2 bg-black border border-gray-700 hover:bg-gray-800 text-white px-4 py-3 rounded-full shadow-[0_0_15px_rgba(255,255,255,0.1)] transition-transform hover:scale-110 font-bold text-sm">
+          {/* Dùng icon svg trắng của Tiktok */}
+          <svg fill="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
+            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+          </svg>
+          TikTok
+        </a>
+      </div>
     </div>
   );
 }
