@@ -18,6 +18,7 @@ import {
 
 import { 
   ShoppingCart, 
+  MessageCircle,
   Search, 
   Settings, 
   MonitorPlay,
@@ -274,6 +275,7 @@ export default function App() {
   const [view, setView] = useState('store');
   // --- BẢO MẬT ADMIN PANEL ---
   const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false);
+  const [isChatOpen, setIsChatOpen] = useState(false);  
 
   const handleOpenAdmin = () => {
     if (isAdminAuthenticated) {
@@ -1834,6 +1836,55 @@ export default function App() {
           </svg>
           TikTok
         </a>
+      </div>
+      {/* --- GIAO DIỆN CHATBOT MINI (GÓC DƯỚI BÊN PHẢI) --- */}
+      <div className="fixed bottom-6 right-6 z-50">
+        {isChatOpen ? (
+          <div className="bg-gray-900 border border-gray-700 rounded-2xl w-[320px] h-[420px] flex flex-col overflow-hidden shadow-[0_0_20px_rgba(37,99,235,0.3)] animate-in slide-in-from-bottom-5">
+            {/* Header của Chat */}
+            <div className="bg-blue-600 p-3 flex justify-between items-center shadow-md">
+              <div className="flex items-center gap-2">
+                <div className="w-2.5 h-2.5 bg-green-400 rounded-full animate-pulse"></div>
+                <span className="font-bold text-white text-sm">Bot Hỗ Trợ PC Giá Rẻ</span>
+              </div>
+              <button onClick={() => setIsChatOpen(false)} className="text-white hover:text-gray-300 transition-colors">
+                <X size={20} />
+              </button>
+            </div>
+            
+            {/* Nội dung tin nhắn */}
+            <div className="flex-1 p-4 overflow-y-auto bg-[#0b0f19] space-y-4">
+              {/* Tin nhắn từ Bot */}
+              <div className="flex gap-2">
+                <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center shrink-0">
+                  <span className="text-white text-xs font-bold">Bot</span>
+                </div>
+                <div className="bg-gray-800 border border-gray-700 text-sm text-gray-200 p-3 rounded-2xl rounded-tl-sm shadow-sm">
+                  Chào bạn! Mình là trợ lý ảo của PC Giá Rẻ. Bạn cần tư vấn cấu hình máy hay linh kiện nào ạ? 🎮
+                </div>
+              </div>
+            </div>
+            
+            {/* Ô nhập tin nhắn */}
+            <div className="p-3 bg-gray-900 border-t border-gray-800 flex gap-2">
+              <input 
+                type="text" 
+                placeholder="Nhập câu hỏi..." 
+                className="flex-1 bg-gray-800 border border-gray-700 text-white text-sm px-3 py-2.5 rounded-xl outline-none focus:border-blue-500 transition-colors" 
+              />
+              <button className="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2.5 rounded-xl font-bold text-sm transition-colors">
+                Gửi
+              </button>
+            </div>
+          </div>
+        ) : (
+          <button
+            onClick={() => setIsChatOpen(true)}
+            className="bg-blue-600 hover:bg-blue-500 text-white p-4 rounded-full shadow-[0_0_15px_rgba(37,99,235,0.5)] transition-transform hover:scale-110 flex items-center justify-center animate-bounce"
+          >
+            <MessageCircle size={28} />
+          </button>
+        )}
       </div>
     </div>
   );
